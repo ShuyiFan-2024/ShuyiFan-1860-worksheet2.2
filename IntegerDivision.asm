@@ -1,5 +1,10 @@
- @R4
-    M=0        
+    @R4
+    M=0
+    @R5
+    M=0
+    @R6
+    M=1
+
 
     @R1
     D=M
@@ -51,20 +56,35 @@
     @X_COPY
     D=M
     @R3
-    M=D         
+    M=D
+    @R5
+    D=M
+    @ANSWER
+    D;JGT
+    @R6
+    D=M
+    @QUOTIENT
+    D;JEQ
+
 
     @END
     0;JMP       
 
 (NEG_X)
     @X_COPY
-    M=-M        
+    M=-M
+    @R5
+    M=1
+    @R6
+    M=M-1
     @LOOP
     0;JMP       
 
 (NEG_Y)
     @Y_COPY
-    M=-M        
+    M=-M
+    @R6
+    M=M-1        
     @LOOP
     0;JMP       
 
@@ -72,6 +92,20 @@
     @R4
     M=1         
     @END
-    0;JMP       
+    0;JMP      
+
+(ANSWER)
+    @R3
+    M=-M
+    @END
+    0;JMP
+
+(QUOTIENT)
+    @R2
+    M=-M
+    @END
+    0;JMP
+
+
 
 (END)
